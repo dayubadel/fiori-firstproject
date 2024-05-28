@@ -3,6 +3,10 @@
     "CountryKey": "",
     "Countries": [
         {
+            "key": "",
+            "text": ""
+        },
+        {
             "key": "Germany",
             "text": "Germany"
         },
