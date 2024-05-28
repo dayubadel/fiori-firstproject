@@ -9,7 +9,10 @@ sap.ui.define([
 
         return Controller.extend("dayana.invoice.controller.MainView", {
             onInit: function () {
-
+                const oJSONModel = new sap.ui.model.json.JSONModel();
+                const oView = new this.getView();
+                oJSONModel.loadData("./model/selectionScreenMenu.json");
+                oView.setModel(oJSONModel, "selectionScreen");
             }
         });
     });
