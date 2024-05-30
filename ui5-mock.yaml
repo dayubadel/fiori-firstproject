@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: dayana.invoice
+  name: dayana.invoices
 type: application
 server:
   customMiddleware:
@@ -18,15 +18,19 @@ server:
         backend:
           - path: /v2
             url: https://northwind.dest
-            destination: Northwind
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
         port: 35729
         path: webapp
         delay: 300
-    - name: fiori-tools-preview
-      afterMiddleware: fiori-tools-appreload
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
       configuration:
-        component: dayana.invoice
-        ui5Theme: sap_horizon
+        mountPath: /
+        services:
+          - urlPath: /v2/northwind/northwind.svc
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/data
+            generateMockData: true
+        annotations: []

@@ -18,6 +18,20 @@
                 <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://filter" press="onFilter" class="sapUiSmallMarginEnd"/>
                 <Button id="btnClearFilters" text="{i18n>btnClearFilters}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd"/>
             </Panel>
+            <Panel id="panel2">
+                <List id="invoicesList" headerText="{i18n>invoicesHeaderList}" class="SapUiResponsiveMargin" width="auto" items="{/Invoices}">
+                    <items>
+                        <ObjectListItem id="objectListItem" title="{ShipName} - {Country}" 
+                        number="{parts : [ {path: 'ExtendedPrice'}, {path: 'selectionScreen>/Currency'}],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions:{
+                                    showMeasure : false
+                                } }"
+                        numberUnit="{selectionScreen>/Currency}"></ObjectListItem>
+                    </items>
+                </List>
+                
+            </Panel>
         </content>
     </Page>
 </mvc:View>
